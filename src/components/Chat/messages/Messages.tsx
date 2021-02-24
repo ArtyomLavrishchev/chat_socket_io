@@ -23,7 +23,7 @@ const Messages: React.FC = () => {
 
     const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
         const element = e.currentTarget;
-        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 250) {
+        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 300) {
             !autoScrollIsActive && setAutoScrollIsActive(true)
         } else {
             autoScrollIsActive && setAutoScrollIsActive(false)

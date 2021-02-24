@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {addUserToTheList} from '../../../redux/users-reducer';
 import style from './Header.module.scss'
+import {useDispatch} from "react-redux";
 
 const Header: React.FC<PropsType> = ({photo, login}) => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(addUserToTheList({name: login, photo: photo}))
+    }, [])
     return (
         <header className={style.wrapper}>
             <div>
