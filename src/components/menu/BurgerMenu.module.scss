@@ -1,0 +1,71 @@
+@import "src/common/styles/mixins";
+
+.burgerMenu {
+  .burgerMenuButton {
+    position: fixed;
+    top: 10%;
+    left: 15px;
+    z-index: 30;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    .burgerMenuLines {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include burgerMenuLine();
+
+      &::after {
+        @include burgerMenuLine("", -8px);
+        transition: 0.5s;
+      }
+
+      &::before {
+        @include burgerMenuLine("", 8px);
+        transition: 0.5s;
+      }
+    }
+  }
+
+  .burgerMenuNav {
+    position: fixed;
+    z-index: 20;
+    display: flex;
+    flex-flow: column;
+    width: 100vw;
+    overflow-y: auto;
+    left: -100%;
+    transition: 0.5s;
+    height: 80%;
+    @include flex(null, center, center);
+  }
+}
+
+
+.burgerMenuActive {
+  .burgerMenuButton {
+    .burgerMenuLines {
+      background-color: transparent;
+
+      &::after {
+        top: 0;
+        transform: rotate(45deg);
+        transition: 0.5s;
+      }
+
+      &::before {
+        top: 0;
+        transform: rotate(-45deg);
+        transition: 0.5s;
+      }
+    }
+  }
+
+  .burgerMenuNav {
+    left: 0;
+  }
+
+}
+
+

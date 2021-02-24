@@ -1,0 +1,20 @@
+.chatWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .dialogsWrapper {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+    flex-grow: 1;
+
+    .dialogs {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+  }
+}

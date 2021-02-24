@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import './App.scss';
+import Chat from "./components/Chat/Chat";
+import Greet from "./components/Greet/Greet";
+import {getPhoto, setUser} from "./redux/users-reducer";
+import {nameGenerator} from "./common/name-generator";
+import {useDispatch} from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [join, setJoin] = useState<boolean>(false);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(setUser(nameGenerator()));
+        dispatch(getPhoto())
+    }, [dispatch]);
+
+    const joinHandler = () => {
+        setJoin(true)
+    };
+
+    console.log("App")
+
+    return (
+        <div className="App">
+            {!join? <Greet joinHandler={joinHandler}/> : <Chat/>}
+        </div>
+    );
+};
 export default App;

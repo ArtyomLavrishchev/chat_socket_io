@@ -1,0 +1,86 @@
+
+@mixin image($width) {
+  min-width: $width;
+  height: $width;
+  border-radius: 50%;
+  background-size: cover;
+  box-shadow: 0 0 5px cyan;
+}
+
+@mixin btn() {
+  background-color: #26a69a;
+  border: none;
+  color: #d7d7d7;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #218d83;
+  }
+
+  &:focus {
+    outline: none !important;
+  }
+
+  &:active {
+    box-shadow: 0 0 5px aqua;
+  }
+}
+
+@mixin delButton() {
+  @include btn();
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin scrollBar() {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 15px;
+    background-color: #111;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #26a69a;
+    border-radius: 9em;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #218d83;
+  }
+
+  &::-webkit-scrollbar-button:vertical:start:decrement {
+    background: linear-gradient(120deg, #111 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(240deg, #111 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(0deg, #111 30%, rgba(0, 0, 0, 0) 31%);
+    background-color: #26a69a;
+  }
+
+  &::-webkit-scrollbar-button:vertical:end:increment {
+    background: linear-gradient(300deg, #111 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(60deg, #111 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(180deg, #111 30%, rgba(0, 0, 0, 0) 31%);
+    background-color: #26a69a;
+  }
+}
+
+@mixin burgerMenuLine($content: null, $top: null) {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #d7d7d7;
+  content: $content;
+  top: $top;
+}
+
+@mixin flex($flexDirection, $alignItems, $justifyContent) {
+  display: flex;
+  flex-direction: $flexDirection;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}

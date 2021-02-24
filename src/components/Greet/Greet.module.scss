@@ -1,0 +1,43 @@
+@import "src/common/styles/mixins.scss";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
+  .text {
+    height: 25%;
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    @media screen and (max-width: 768px) {
+      font-size: 30px;
+    }
+    &::after {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 2px;
+      background-color: #26a69a;
+    }
+    &::before {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 2px;
+      background-color: #26a69a;
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .button {
+    @include btn();
+    font-size: 25px;
+    border-radius: .5rem;
+    padding: 15px 25px;
+  }
+}

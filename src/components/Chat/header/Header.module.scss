@@ -1,0 +1,30 @@
+@import "../../../common/styles/mixins";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  background-color: #26a69a;
+  padding: 0 1.5rem;
+
+  .icon {
+    font-size: 40px;
+    cursor: default;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+
+    .text {
+      margin-right: .5rem;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .image {
+      @include image(50px);
+    }
+  }
+}

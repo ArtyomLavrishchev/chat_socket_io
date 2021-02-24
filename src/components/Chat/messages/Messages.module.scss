@@ -1,0 +1,7 @@
+@import "../../../common/styles/mixins";
+
+.wrapper {
+  overflow-y: auto;
+  @include scrollBar;
+  height: 100%;
+}

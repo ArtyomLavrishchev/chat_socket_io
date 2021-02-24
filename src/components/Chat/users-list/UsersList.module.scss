@@ -1,0 +1,34 @@
+@import "../../../common/styles/mixins";
+@import "src/components/Chat/messages/message/Message.module";
+
+.wrapper {
+  box-sizing: border-box;
+  padding: 10px;
+  min-width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #2e364a;
+  border-radius: .5rem;
+  overflow-y: auto;
+  @include scrollBar;
+
+  .user {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .image {
+      @include image(65px)
+    }
+
+    .text {
+      margin-left: 10px;
+    }
+    .delButton {
+      @include delButton();
+      bottom: 10%;
+    }
+  }
+}
