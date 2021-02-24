@@ -6,7 +6,6 @@ type GreetType = {
 }
 
 const Greet: React.FC<GreetType> = ({joinHandler}) => {
-    console.log("Greet")
     return (
         <div className={styles.wrapper}>
             <div className={styles.text}>Добро пожаловать в чат!</div>

@@ -2,7 +2,6 @@ import React from 'react';
 import style from './Header.module.scss'
 
 const Header: React.FC<PropsType> = ({photo, login}) => {
-    console.log("Header")
     return (
         <header className={style.wrapper}>
             <div>

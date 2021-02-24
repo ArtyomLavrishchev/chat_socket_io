@@ -8,7 +8,7 @@ import Footer from "./footer/Footer";
 import UsersList from "./users-list/UsersList";
 import Messages from "./messages/Messages";
 import {useWindowSize} from "../../common/useWindowSize";
-import { BurgerMenu } from '../menu/BurgerMenu';
+import {BurgerMenu} from '../menu/BurgerMenu';
 
 
 const Chat = () => {
@@ -21,7 +21,6 @@ const Chat = () => {
         dispatch(addMessageThunk());
     }, [dispatch]);
 
-    console.log("Chat");
     return (
         <div className={style.chatWrapper}>
             <Header photo={photo} login={userName}/>

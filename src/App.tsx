@@ -19,8 +19,6 @@ const App = () => {
         setJoin(true)
     };
 
-    console.log("App")
-
     return (
         <div className="App">
             {!join? <Greet joinHandler={joinHandler}/> : <Chat/>}

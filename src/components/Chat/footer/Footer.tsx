@@ -4,7 +4,6 @@ import {v1} from "uuid";
 import socket from "../../../socket";
 
 const Footer: React.FC<PropsType> = ({userName, photo}) => {
-    console.log("Footer")
     const [message, setMessage] = useState<string>('');
     const [image, setImage] = useState<string | ArrayBuffer | null>('');
     const messageHandler = (e: ChangeEvent<HTMLInputElement>) => {

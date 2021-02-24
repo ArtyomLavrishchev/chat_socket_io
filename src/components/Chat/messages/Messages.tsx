@@ -7,7 +7,6 @@ import {AppRootType} from "../../../redux/store";
 
 const Messages: React.FC = () => {
     const messages = useSelector<AppRootType, Array<MessageType>>(state => state.messages.messages)
-    console.log("Messages")
     const dispatch = useDispatch();
     const deleteMessage = useCallback((messageId: string) => {
         dispatch(removeMessage(messageId));

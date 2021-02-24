@@ -13,7 +13,6 @@ type MessageType = {
 
 const Message: React.FC<MessageType> = (
     {photo, name, message, id, deleteMessage, newImage}) => {
-    console.log("Message")
     return (
         <div className={style.message}>
             <div className={style.photo} style={{backgroundImage: `url("${photo}")`}}/>

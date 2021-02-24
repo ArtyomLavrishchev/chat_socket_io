@@ -10,7 +10,6 @@ const UsersList: React.FC = () => {
     const removeUserHandler = (userName: string) => {
         dispatch(removeUser(userName));
     }
-    console.log("Users list")
     return (
         <div className={style.wrapper}>
             {users.map(u => <div className={style.user} key={u.name}>
