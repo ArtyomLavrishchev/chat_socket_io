@@ -36,10 +36,17 @@ const Footer: React.FC<PropsType> = ({userName, photo}) => {
         file && reader.readAsDataURL(file);
     }
 
+    const onPressEnter = (e: React.KeyboardEvent) => {
+        if (e.charCode === 13) {
+            sendMessage()
+        }
+    }
+
     return (
         <div className={style.wrapper}>
             {image && <img className={style.newImage} src={`${image}`} alt={'newImage'}/>}
-            <input className={style.input} onChange={messageHandler} type={'text'} placeholder={"Message"}
+            <input onKeyPress={onPressEnter} className={style.input} onChange={messageHandler} type={'text'}
+                   placeholder={"Message"}
                    value={message}/>
             <input type="file" name="file" id="input__file" className={style.file} onChange={encodeImageFileAsURL}/>
             <label className={style.button} htmlFor="input__file">&#10011;</label>

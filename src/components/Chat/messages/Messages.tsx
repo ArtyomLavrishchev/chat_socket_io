@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import style from "./Messages.module.scss";
 import {MessageType, removeMessage} from "../../../redux/message-reducer";
 import Message from "./message/Message";
@@ -12,8 +12,26 @@ const Messages: React.FC = () => {
         dispatch(removeMessage(messageId));
     }, [dispatch]);
 
+    const messagesAnchorRef = useRef<HTMLDivElement>(null)
+    const [autoScrollIsActive, setAutoScrollIsActive] = useState<boolean>(true)
+
+    useEffect(() => {
+        if (autoScrollIsActive) {
+            messagesAnchorRef.current?.scrollIntoView({behavior: "smooth"})
+        }
+    }, [messages])
+
+    const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+        const element = e.currentTarget;
+        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 250) {
+            !autoScrollIsActive && setAutoScrollIsActive(true)
+        } else {
+            autoScrollIsActive && setAutoScrollIsActive(false)
+        }
+    }
+
     return (
-        <div className={style.wrapper}>
+        <div className={style.wrapper} onScroll={scrollHandler}>
             {messages.map((m) => <div key={m.id}>
                 <Message
                     newImage={m.newImage}
@@ -23,6 +41,7 @@ const Messages: React.FC = () => {
                     id={m.id}
                     deleteMessage={deleteMessage}/>
             </div>)}
+            <div ref={messagesAnchorRef}/>
         </div>
     );
 };
