@@ -1,9 +1,11 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import style from "./Messages.module.scss";
-import {MessageType, removeMessage} from "../../../redux/message-reducer";
-import Message from "./message/Message";
 import {useDispatch, useSelector} from "react-redux";
+
+import {MessageType, removeMessage} from "../../../redux/message-reducer";
 import {AppRootType} from "../../../redux/store";
+import Message from "./message/Message";
+
+import style from "./Messages.module.scss";
 
 const Messages: React.FC = () => {
     const messages = useSelector<AppRootType, Array<MessageType>>(state => state.messages.messages)
@@ -11,7 +13,6 @@ const Messages: React.FC = () => {
     const deleteMessage = useCallback((messageId: string) => {
         dispatch(removeMessage(messageId));
     }, [dispatch]);
-
     const messagesAnchorRef = useRef<HTMLDivElement>(null)
     const [autoScrollIsActive, setAutoScrollIsActive] = useState<boolean>(true)
 

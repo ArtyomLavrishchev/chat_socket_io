@@ -1,7 +1,4 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Dispatch} from "redux";
-import socket from "../socket";
-import {addUserToTheList} from "./users-reducer";
 
 const initialState: InitialStateType = {
     messages: [],
@@ -25,17 +22,6 @@ const slice = createSlice({
 
 export const messageReducer = slice.reducer;
 export const {addMessage, removeMessage} = slice.actions;
-
-export const addMessageThunk = () => {
-    return (dispatch: Dispatch) => {
-        socket.on('chat message', (msg: MessageType) => {
-                dispatch(addMessage(msg));
-                dispatch(addUserToTheList({name: msg.name, photo: msg.photo}))
-            }
-        );
-    }
-}
-
 
 type InitialStateType = {
     messages: Array<MessageType>

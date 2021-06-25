@@ -1,7 +1,9 @@
 import React, {ChangeEvent, useState} from 'react';
-import style from './Footer.module.scss';
 import {v1} from "uuid";
+
 import socket from "../../../socket";
+
+import style from './Footer.module.scss';
 
 const Footer: React.FC<PropsType> = ({userName, photo}) => {
     const [message, setMessage] = useState<string>('');
@@ -10,15 +12,17 @@ const Footer: React.FC<PropsType> = ({userName, photo}) => {
         setMessage(e.currentTarget.value);
 
     };
+
     const sendMessage = () => {
         const data = {
             id: v1(),
             name: userName,
             message: message,
             photo: photo,
-            newImage: image
+            newImage: image,
         };
         socket.emit('chat message', data);
+        console.log(data)
         setMessage('');
         setImage('')
 

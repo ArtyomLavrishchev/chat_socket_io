@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
-import style from './Chat.module.scss'
-import {useDispatch, useSelector} from "react-redux";
+import React from 'react';
+import {useSelector} from "react-redux";
+
 import {AppRootType} from "../../redux/store";
-import {addMessageThunk} from "../../redux/message-reducer";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import UsersList from "./users-list/UsersList";
@@ -10,16 +9,12 @@ import Messages from "./messages/Messages";
 import {useWindowSize} from "../../common/useWindowSize";
 import {BurgerMenu} from '../menu/BurgerMenu';
 
+import style from './Chat.module.scss'
 
 const Chat = () => {
-    const dispatch = useDispatch();
     const userName = useSelector<AppRootType, string>(state => state.users.userName)
     const photo = useSelector<AppRootType, string>(state => state.users.photo)
     const width = useWindowSize();
-
-    useEffect(() => {
-        dispatch(addMessageThunk());
-    }, [dispatch]);
 
     return (
         <div className={style.chatWrapper}>
